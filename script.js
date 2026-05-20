@@ -4,6 +4,24 @@ document.querySelectorAll('.manga-page').forEach((page, index) => {
     page.style.backgroundImage = `url(/assets/Page-${pageNumber}.png)`;
 });
 
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+// Observe all page sections
+document.querySelectorAll('.page-section').forEach(section => {
+    observer.observe(section);
+});
+
 // Disable right-click context menu on manga pages
 document.querySelectorAll('.manga-page').forEach(page => {
     page.addEventListener('contextmenu', (e) => {
@@ -55,3 +73,4 @@ document.addEventListener('selectstart', (e) => {
         e.preventDefault();
     }
 });
+

@@ -38,7 +38,7 @@ body {
 .hero {
     position: relative;
     width: 100%;
-    height: 900px;
+    height: 100vh;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -46,6 +46,9 @@ body {
 }
 
 .hero-embed {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -60,35 +63,68 @@ body {
 
 .hero-text {
     position: absolute;
-    bottom: 40px;
-    left: 40px;
+    bottom: 50px;
+    left: 50px;
     z-index: 10;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-text h1 {
     font-family: 'EB Garamond', serif;
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+    line-height: 1.1;
+}
+
+.hero-text h1 span {
+    display: block;
+}
+
+.hero-text h1 .line-1 {
+    font-size: 64px;
+}
+
+.hero-text h1 .line-2 {
+    font-size: 64px;
 }
 
 .hero-text p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 300;
     letter-spacing: 0.5px;
+    line-height: 1.6;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     max-width: 800px;
     margin: 0 auto;
+}
+
+.page-section {
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
 }
 
 .page-label {
@@ -108,7 +144,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin: 0 0 1rem 0;
+    margin: 0 auto 1rem;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     user-select: none;
@@ -116,10 +152,6 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     cursor: default;
-}
-
-.manga-page:last-of-type {
-    margin-bottom: 3rem;
 }
 
 /* Prevent image context menu and interactions */
@@ -146,34 +178,42 @@ html {
     color: #888888;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .credits a:hover {
     color: #aaaaaa;
-    text-decoration: underline;
+}
+
+.credits i {
+    font-size: 14px;
+    margin-left: 4px;
+}
+
+/* Scroll animation */
+.page-section.animate {
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
-        padding: 1rem 0.75rem;
+        padding: 2rem 0.75rem;
     }
 
     .manga-page {
         max-width: 100%;
     }
 
-    .hero {
-        height: 600px;
-    }
-
-    .hero-embed div {
-        width: 100% !important;
-        height: 100% !important;
+    .hero-text {
+        bottom: 30px;
+        left: 30px;
     }
 
     .hero-text h1 {
-        font-size: 36px;
+        font-size: 48px;
     }
 
     .page-label {
@@ -183,16 +223,7 @@ html {
 
 @media (max-width: 480px) {
     .container {
-        padding: 0.75rem 0.5rem;
-    }
-
-    .hero {
-        height: 400px;
-    }
-
-    .hero-embed div {
-        width: 100% !important;
-        height: 100% !important;
+        padding: 2rem 0.5rem;
     }
 
     .hero-text {
@@ -201,7 +232,7 @@ html {
     }
 
     .hero-text h1 {
-        font-size: 28px;
+        font-size: 36px;
     }
 
     .hero-text p {
@@ -219,4 +250,5 @@ img {
     -webkit-user-drag: none;
     user-drag: none;
 }
+
 
