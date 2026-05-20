@@ -5,11 +5,11 @@ A premium dark-themed digital manga reader for the AP English project presentati
 
 ## About
 
-This is the Manga for the AP English project Presentation.
+This is the Manga for my AP English project Presentation.
 
 **Presented by:** Yassen, Kane, Wildany
 
-An immersive, full-screen experience featuring 6 manga pages with smooth scroll animations and professional design. Built with modern web technologies for optimal performance and image protection.
+6 Manga pages with smooth scroll animations and professional design. Built with modern web technologies for optimal performance and image protection.
 
 ## Technologies Used
 
@@ -18,7 +18,7 @@ An immersive, full-screen experience featuring 6 manga pages with smooth scroll 
 - **JavaScript** - Scroll animations and image protection
 - **EB Garamond Font** - Premium typography from Google Fonts
 - **Font Awesome** - Icon library for GitHub integration
-- **Unicorn Studio** - Interactive WebGL hero animation
+- **Unicorn Studio** - Interactive WebGL hero animation (WebGL)
 
 ## View Live
 
@@ -26,6 +26,3 @@ Visit the project live on Vercel:
 🔗 **https://ap-english-project.vercel.app/**
 
 ---
-
-Made with precision for the AP English presentation.
-
