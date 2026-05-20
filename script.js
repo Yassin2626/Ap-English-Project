@@ -1,7 +1,7 @@
 // Load manga pages as CSS background images
 document.querySelectorAll('.manga-page').forEach((page, index) => {
     const pageNumber = index + 1;
-    page.style.backgroundImage = `url(/images/page${pageNumber}.png)`;
+    page.style.backgroundImage = `url(/assets/Page-${pageNumber}.png)`;
 });
 
 // Disable right-click context menu on manga pages
