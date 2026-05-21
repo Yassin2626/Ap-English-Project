@@ -4,6 +4,36 @@ document.querySelectorAll('.manga-page').forEach((page, index) => {
     page.style.backgroundImage = `url(/assets/Page-${pageNumber}.png)`;
 });
 
+// Hero WebGL unload optimization
+const heroSection = document.querySelector('.hero');
+const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+            // Hero is out of view - unload WebGL
+            const heroEmbed = document.querySelector('.hero-embed');
+            if (heroEmbed && !heroEmbed.dataset.unloaded) {
+                heroEmbed.innerHTML = '';
+                heroEmbed.dataset.unloaded = 'true';
+                
+                // Destroy Unicorn Studio if it exists
+                if (window.UnicornStudio) {
+                    window.UnicornStudio = null;
+                }
+                
+                // Remove the script tag
+                const unicornScripts = document.querySelectorAll('script[src*="unicornstudio"]');
+                unicornScripts.forEach(script => script.remove());
+                
+                console.log('WebGL hero unloaded for performance optimization');
+            }
+        }
+    });
+}, { threshold: 0 });
+
+if (heroSection) {
+    heroObserver.observe(heroSection);
+}
+
 // Intersection Observer for scroll animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -73,4 +103,5 @@ document.addEventListener('selectstart', (e) => {
         e.preventDefault();
     }
 });
+
 
